@@ -1,4 +1,4 @@
-<h1 align="center">🎄 Navegación Avanzada y Visualización Integral de Active Directory 🎄</h1>
+<h1 align="center">🎄 Navegación Avanzada y Visualización Integral de Active Directory  </h1>
 
 Aplicación web para administración avanzada de entornos Active Directory mediante una interfaz intuitiva, segura y extensible. Utiliza Python Flask en el backend, PowerShell para automatización y Keycloak para autenticación.
 
