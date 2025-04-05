@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NAVIDAD - Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1C2840;
+            color: #F2F2F2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #F2F2F2;
+            padding: 20px;
+            margin-top: -50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .logo img {
+            max-height: 330px;
+            width: auto;
+            display: block;
+            margin: 30px auto 50px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-top: 10px;
+            display: inline-block;
+            border: 1px solid #797F8C;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #F2F2F2;
+            color: #243040;
+        }
+
+        button {
+            background-color: #243040;
+            color: white;
+            font-size: 16px;
+            padding: 12px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #797F8C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            color: #1C2840;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .alert.info { background-color: #31708f; } 
+        .alert.error { background-color: #d9534f; } 
+        .alert.success { background-color: #5cb85c; } 
+        .alert.warning { background-color: #f0ad4e; }
+
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo">
+    </div>
+
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" id="username" name="username" placeholder="Nombre de usuario" autocomplete="off" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="off" required>
+            <button type="submit">Acceder</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comparar Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Comparar Usuarios de Active Directory</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        <form method="post" style="width: 100%; display: flex;">
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_usuario1">Nombre del Usuario 1:</label>
+                    <input type="text" id="nombre_usuario1" name="nombre_usuario1" placeholder="Obligatorio" required
+                        list="datalist_usuario" oninput="buscarSugerencias(this.value, 'datalist_usuario', 'User')"
+                        onblur="validarSugerencias(this, 'datalist_usuario')" autocomplete="off">
+                    <datalist id="datalist_usuario"></datalist>
+                    <span id="error_usuario" style="color:red;"></span>
+                </div>
+            </div>
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_usuario2">Nombre del Usuario 2:</label>
+                    <input type="text" id="nombre_usuario2" name="nombre_usuario2" placeholder="Obligatorio" required
+                        list="datalist_usuario" oninput="buscarSugerencias(this.value, 'datalist_usuario', 'User')"
+                        onblur="validarSugerencias(this, 'datalist_usuario')" autocomplete="off">
+                    <datalist id="datalist_usuario"></datalist>
+                    <span id="error_usuario" style="color:red;"></span>
+                </div>
+            </div>
+
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar OUs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Buscar Unidades Organizativas de Active Directory</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        <form method="post" style="width: 100%; display: flex;">
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_ou">Nombre de la OU:</label>
+                    <input type="text" id="nombre_ou" name="nombre_ou" placeholder="Opcional" list="datalist_ou"
+                        oninput="buscarSugerencias(this.value, 'datalist_ou', 'OU')" autocomplete="off">
+                    <datalist id="datalist_ou"></datalist>
+                </div>
+            </div>
+
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</body>
+
+</html>

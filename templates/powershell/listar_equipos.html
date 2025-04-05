@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Equipos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Listar Equipos de Active Directory</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        <form method="post" style="width: 100%; display: flex;">
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_equipo">Nombre del Equipo:</label>
+                    <input type="text" id="nombre_equipo" name="nombre_equipo" placeholder="Opcional"
+                        list="datalist_equipo" oninput="buscarSugerencias(this.value, 'datalist_equipo', 'Computer')"
+                        autocomplete="off">
+                    <datalist id="datalist_equipo"></datalist>
+                </div>
+            </div>
+
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de Restauración de Contraseña</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Resultado de Restauración de Contraseña</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        {{ resultado | safe }}
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Grupos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Listar Grupos de Active Directory</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        <form method="post" style="width: 100%; display: flex;">
+            
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_grupo">Nombre del Grupo:</label>
+                    <input type="text" id="nombre_grupo" name="nombre_grupo" placeholder="Opcional" 
+                        list="datalist_grupo" oninput="buscarSugerencias(this.value, 'datalist_grupo', 'Group')"
+                        autocomplete="off">
+                    <datalist id="datalist_grupo"></datalist>
+                </div>
+            </div>
+            
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</body>
+
+</html>

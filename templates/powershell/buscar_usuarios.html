@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Buscar Usuarios de Active Directory</h1>
+        <button class="menu-button" onclick="window.location.href='/menu';">Menú Principal</button>
+    </div>
+
+    <div class="container">
+        <form method="post" style="width: 100%; display: flex;">
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_usuario">Nombre del Usuario:</label>
+                    <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Opcional"
+                        list="datalist_usuario" oninput="buscarSugerencias(this.value, 'datalist_usuario', 'User')"
+                        autocomplete="off">
+                    <datalist id="datalist_usuario"></datalist>
+                </div>
+            </div>
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_ou">Nombre del OU:</label>
+                    <input type="text" id="nombre_ou" name="nombre_ou" placeholder="Opcional" list="datalist_ou"
+                        oninput="buscarSugerencias(this.value, 'datalist_ou', 'OU')" autocomplete="off">
+                    <datalist id="datalist_ou"></datalist>
+                </div>
+            </div>
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="nombre_grupo">Nombre del Grupo:</label>
+                    <input type="text" id="nombre_grupo" name="nombre_grupo" placeholder="Opcional"
+                        list="datalist_grupo" oninput="buscarSugerencias(this.value, 'datalist_grupo', 'Group')"
+                        autocomplete="off">
+                    <datalist id="datalist_grupo"></datalist>
+                </div>
+            </div>
+
+            <div class="field-container">
+                <div class="form-group">
+                    <label for="estado_usuario">Estado del Usuario:</label>
+                    <select id="estado_usuario" name="estado_usuario">
+                        <option value="Todos" selected>Todos</option>
+                        <option value="Habilitado">Habilitado</option>
+                        <option value="Deshabilitado">Deshabilitado</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</body>
+
+</html>

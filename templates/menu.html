@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NAVIDAD - Gestión de Active Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F2F2F2;
+            color: #1C2840;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #243040;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        h1 i {
+            margin-right: 10px;
+        }
+
+        #logout-button {
+            background-color: #AEB4BF;
+            color: #243040;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        #logout-button i {
+            margin-right: 5px;
+        }
+
+        #logout-button:hover {
+            background-color: #797F8C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 95%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-section {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .menu-section:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-section h2 {
+            font-size: 20px;
+            color: #1C2840;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-section h2 i {
+            margin-right: 10px;
+        }
+
+        .menu-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .menu-buttons button {
+            background-color: #1C2840;
+            color: white;
+            border: none;
+            padding: 14px 14px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .menu-buttons button:hover {
+            background-color: #243040;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            background-color: #243040;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <h1><i class="fas fa-network-wired"></i>Navegación Avanzada y Visualización Integral de Active Directory</h1>
+        <form method="post" action="{{ url_for('logout') }}">
+            <button type="submit" id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <form method="post" action="/menu">
+            <section class="menu-section">
+                <h2><i class="fas fa-search"></i> Búsqueda</h2>
+                <div class="menu-buttons">
+                    <button type="submit" name="opcion" value="buscar_usuarios">Buscar Usuarios</button>
+                    <button type="submit" name="opcion" value="buscar_grupos">Buscar Grupos</button>
+                    <button type="submit" name="opcion" value="buscar_equipos">Buscar Equipos</button>
+                    <button type="submit" name="opcion" value="buscar_ous">Buscar OUs</button>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2><i class="fas fa-sync-alt"></i> Comparaciones</h2>
+                <div class="menu-buttons">
+                    <button type="submit" name="opcion" value="comparar_usuarios">Comparar Usuarios</button>
+                    <button type="submit" name="opcion" value="comparar_grupos">Comparar Grupos</button>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2><i class="fas fa-list"></i> Listados</h2>
+                <div class="menu-buttons">
+                    <button type="submit" name="opcion" value="listar_usuarios">Listar Usuarios</button>
+                    <button type="submit" name="opcion" value="listar_grupos">Listar Grupos</button>
+                    <button type="submit" name="opcion" value="listar_equipos">Listar Equipos</button>
+                    <button type="submit" name="opcion" value="listar_ous">Listar OUs</button>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2><i class="fas fa-clock"></i> Últimos Eventos</h2>
+                <div class="menu-buttons">
+                    <button type="submit" name="opcion" value="ultimo_sesion">Inicios de sesión</button>
+                    <button type="submit" name="opcion" value="ultimo_expira_pass">Contraseñas expiradas</button>
+                    <button type="submit" name="opcion" value="ultimo_cambio_pass">Cambios de contraseña</button>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2><i class="fas fa-toolbox"></i> Herramientas</h2>
+                <div class="menu-buttons">
+                    <button type="submit" name="opcion" value="restore_user">Desbloquear usuario</button>
+                    <button type="submit" name="opcion" value="restore_pass">Restaurar contraseña</button>
+                </div>
+            </section>
+
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 NAVIDAD | Creado por Julio González Muñiz</p>
+    </footer>
+
+</body>
+
+</html>
