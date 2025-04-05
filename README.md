@@ -43,12 +43,32 @@ run.py     # Punto de entrada de la aplicación Flask
 
 ---
 
-## 🔑 Funcionalidades Destacadas
+## 🧩 Funcionalidades del Proyecto
 
-- **🔎 Búsqueda Avanzada:** Consultas filtradas por nombre, estado, grupo, OU, etc.
-- **📊 Visualización de Resultados:** Salida HTML tabular con soporte para comparación.
-- **👥 Gestión de Cuentas:** Restablecimiento de contraseñas, desbloqueo, generación de contraseñas seguras.
-- **🧩 Extensibilidad:** Guía para crear nuevas utilidades (script PowerShell + plantilla HTML + ruta Flask).
+La aplicación está diseñada para facilitar la administración completa de Active Directory a través de distintas herramientas accesibles desde una interfaz web:
+
+### 🔎 Exploración y Búsqueda
+
+- Consultas avanzadas sobre **usuarios, grupos, equipos y unidades organizativas (OU)**.
+- Filtros personalizados por nombre, estado (habilitado/deshabilitado), grupos de pertenencia, etc.
+- Sugerencias automáticas y validación de campos mediante autocompletado.
+
+### 👤 Gestión de Cuentas
+
+- **Desbloqueo de cuentas** bloqueadas por políticas de seguridad.
+- **Restablecimiento de contraseñas** con generación segura y forzado de cambio en el siguiente inicio de sesión.
+- Comprobación del estado de cuentas (habilitado/deshabilitado, expiración, etc.).
+
+### 🧮 Comparación y Auditoría
+
+- Comparación entre usuarios o entre grupos para detectar diferencias de membresía.
+- Herramientas para análisis rápido de asignaciones en estructuras grandes.
+
+### 📑 Generación de Informes (HTML)
+
+- Todos los resultados se presentan en tablas HTML dinámicas.
+- Compatible con exportación y visualización en navegadores modernos.
+- Preparado para extenderse con nuevos reportes en base a scripts PowerShell.
 
 ---
 
